@@ -3,6 +3,8 @@ Demo code for creating WordVector models through connecting DeepLearning4J with 
 
 The purpose of this code is to primarily show how DeepLearning4J can train a WordVector model from data contained in a common RDBMS database rather than flat files or a distributed database system.  
 
+Additionally, the code shows a custom pre-processor and custom iterators over the database ResultSet object.
+
 1. Download the SGM files: 
 ```./downloadReutersSGM.sh```
 
