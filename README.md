@@ -1,6 +1,8 @@
 # reutersDbWvDemo
 Demo code for creating WordVector models through connecting DeepLearning4J with Postgres on the Reuters-21578 dataset
 
+The purpose of this code is to primarily show how DeepLearning4J can train a WordVector model from data contained in a common RDBMS database rather than flat files or a distributed database system.  
+
 1. Download the SGM files: 
 ```./downloadReutersSGM.sh```
 
