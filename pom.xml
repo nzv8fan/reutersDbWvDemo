@@ -14,6 +14,7 @@
         <dl4j.version>0.8.0</dl4j.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+        <cleartk.version>2.0.0</cleartk.version>
 	</properties>
 
 	<dependencies>
@@ -47,6 +48,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-nlp-uima</artifactId>
+            <version>${dl4j.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.nd4j</groupId>
             <artifactId>nd4j-native</artifactId>
             <version>${nd4j.version}</version>
@@ -58,6 +65,12 @@
             <!--<artifactId>nd4j-cuda-8.0-platform</artifactId>-->
             <!--<version>${nd4j.version}</version>-->
         <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.cleartk</groupId>
+            <artifactId>cleartk-opennlp-tools</artifactId>
+            <version>${cleartk.version}</version>
+        </dependency>
 
 	</dependencies>
 

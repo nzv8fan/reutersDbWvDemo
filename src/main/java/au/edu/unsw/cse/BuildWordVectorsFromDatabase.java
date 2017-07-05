@@ -1,9 +1,11 @@
 package au.edu.unsw.cse;
 
+import org.apache.uima.resource.ResourceInitializationException;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.word2vec.Word2Vec;
 import org.deeplearning4j.text.sentenceiterator.BasicResultSetIterator;
 import org.deeplearning4j.text.sentenceiterator.SentenceIterator;
+import org.deeplearning4j.text.sentenceiterator.UimaResultSetIterator;
 import org.deeplearning4j.text.tokenization.tokenizer.preprocessor.CommonPreprocessor;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
@@ -24,7 +26,7 @@ public class BuildWordVectorsFromDatabase {
 
     private static Logger log = LoggerFactory.getLogger(BuildWordVectorsFromDatabase.class);
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException, ResourceInitializationException {
 
         if (args.length < 1) {
             System.err.println("USAGE: java BuildWordVectorsFromDatabase 'jdbc:postgresql://server.domain:port/database?user=username&password=password' " +
@@ -78,10 +80,12 @@ public class BuildWordVectorsFromDatabase {
         log.info("Load & Vectorize Sentences....");
 
         // Strip white space before and after for each line
-        SentenceIterator iter = new BasicResultSetIterator(row, columnName);
+//        SentenceIterator iter = new BasicResultSetIterator(row, columnName);
+        SentenceIterator iter = new UimaResultSetIterator(row, columnName);
         // Split on white spaces in the line to get words
         TokenizerFactory t = new DefaultTokenizerFactory();
-        t.setTokenPreProcessor(new CommonPreprocessor());
+//        t.setTokenPreProcessor(new CommonPreprocessor());
+        t.setTokenPreProcessor(new StripSpecialCharactersPreprocessor());
 
         log.info("Building model....");
         Word2Vec vec = new Word2Vec.Builder()
