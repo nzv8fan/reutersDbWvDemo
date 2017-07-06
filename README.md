@@ -5,6 +5,8 @@ The purpose of this code is to primarily show how DeepLearning4J can train a Wor
 
 Additionally, the code shows a custom pre-processor and custom iterators over the database ResultSet object.
 
+### If you don't have text in a database then create some:
+
 1. Download the SGM files: 
 ```./downloadReutersSGM.sh```
 
@@ -19,11 +21,11 @@ Additionally, the code shows a custom pre-processor and custom iterators over th
 
 ```java -cp target/reutersDbWvDemo-1.0-SNAPSHOT.jar au.edu.unsw.cse.ExtractSGM 'jdbc:postgresql://server.domain:port/database?user=username&password=password' reuters21578sgm/ <jdbcClassName>```
 
-5. Construct the Word Vector model from the DB
+### Construct the Word Vector model from the DB
 
 ```java -cp target/reutersDbWvDemo-1.0-SNAPSHOT.jar au.edu.unsw.cse.BuildWordVectorsFromDatabase 'jdbc:postgresql://server.domain:port/database?user=username&password=password' <iterations> <layer size> <output filename> <sql query> <sql column name> <jdbcClassName>```
 
-6. Test the Word Vector Model
+### Test the Word Vector Model
 
 ```java -cp target/reutersDbWvDemo-1.0-SNAPSHOT.jar au.edu.unsw.cse.WordVectorChecker```
 
