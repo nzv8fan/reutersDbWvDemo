@@ -1,21 +1,3 @@
-/*-
- *
- *  * Copyright 2015 Skymind,Inc.
- *  *
- *  *    Licensed under the Apache License, Version 2.0 (the "License");
- *  *    you may not use this file except in compliance with the License.
- *  *    You may obtain a copy of the License at
- *  *
- *  *        http://www.apache.org/licenses/LICENSE-2.0
- *  *
- *  *    Unless required by applicable law or agreed to in writing, software
- *  *    distributed under the License is distributed on an "AS IS" BASIS,
- *  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  *    See the License for the specific language governing permissions and
- *  *    limitations under the License.
- *
- */
-
 package org.deeplearning4j.text.sentenceiterator;
 
 import org.apache.uima.cas.CAS;
@@ -38,10 +20,13 @@ import java.util.List;
  * Iterates over and returns sentences
  * based on the passed in analysis engine
  *
- * Database version based off UimaSentenceIterator but extends BasicResultSetIterator
+ * Database version of UimaSentenceIterator based off Adam Gibson's UimaSentenceIterator but extends BasicResultSetIterator
  *
- * @author Adam Gibson
- * @author Bradford Heap
+ * Please note: for reset functionality, the underlying JDBC ResultSet must not be of TYPE_FORWARD_ONLY
+ * To achieve this using postgres you can make your query using:
+ * connection.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+ *
+ * @author Brad Heap nzv8fan@gmail.com
  */
 public class UimaResultSetIterator extends BasicResultSetIterator {
 
