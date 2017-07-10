@@ -85,7 +85,8 @@ public class BuildWordVectorsFromDatabase {
         // Split on white spaces in the line to get words
         TokenizerFactory t = new DefaultTokenizerFactory();
 //        t.setTokenPreProcessor(new CommonPreprocessor());
-        t.setTokenPreProcessor(new StripSpecialCharactersPreprocessor());
+//        t.setTokenPreProcessor(new StripSpecialCharactersPreprocessor());
+        t.setTokenPreProcessor(new StemWordsPreprocessor());
 
         log.info("Building model....");
         Word2Vec vec = new Word2Vec.Builder()
